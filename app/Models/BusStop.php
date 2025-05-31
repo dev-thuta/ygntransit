@@ -14,4 +14,14 @@ class BusStop extends Model
     {
         return $this->belongsTo(Township::class);
     }
+
+   public function busroutes()
+    {
+        return $this->hasMany(BusRoute::class);
+    }
+
+    public function buslines()
+    {
+        return $this->hasManyThrough(BusLine::class, BusRoute::class, 'bus_stop_id', 'id', 'id', 'bus_line_id');
+    }
 }

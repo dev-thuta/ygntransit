@@ -46,11 +46,7 @@
                                         </td>
                                         <td>
                                             <a href="{{ url("/admin/bus-routes/edit/$busroute->id") }}" class="btn btn-warning mb-1"><i class="bi bi-pencil-square"></i></a>
-                                            <a class="btn btn-danger mb-1" href="{{ 
-                                            url("/admin/bus-routes/delete/$busroute->id") 
-                                            }}" onclick="return confirm('Are you sure you 
-                                            want to delete this Bus Route?');"><i class="bi 
-                                            bi-trash3-fill"></i></a>
+                                            <a class="btn btn-danger mb-1" href="{{ url("/admin/bus-routes/delete/$busroute->id") }}" onclick="return confirm('Are you sure you want to delete this Bus Route?');"><i class="bi bi-trash3-fill"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

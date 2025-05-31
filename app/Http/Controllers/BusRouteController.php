@@ -13,7 +13,7 @@ class BusRouteController extends Controller
 {
     public function index()
     {
-        $data = BusRoute::with(['busline', 'busstop'])->orderBy('stop_order', 'asc')->paginate(7);
+        $data = BusRoute::with(['busline', 'busstop'])->orderBy('bus_line_id', 'asc')->paginate(7);
         return view('admin.bus-route.index', [
             'busroutes' => $data
         ]);

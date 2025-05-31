@@ -102,4 +102,19 @@ class BusStopController extends Controller
 
         return redirect('/admin/bus-stops')->with('success', 'Bus Stop deleted successfully.');
     }
+
+    public function publicIndex(Request $request)
+    {
+        $search = $request->input('search');
+
+        $busStops = BusStop::with('buslines')
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->orderBy('name')
+            ->paginate(15)
+            ->withQueryString();
+
+        return view('front.bus-stops', compact('busStops'));
+    }
 }

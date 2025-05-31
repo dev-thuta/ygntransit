@@ -16,7 +16,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/admin/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -71,17 +71,11 @@
         <div class="d-flex">
             <!-- Sidebar -->
             <nav class="flex-column flex-shrink-0 p-3 bg-dark text-white vh-100" style="width: 250px;">
-                <a href="/" class="d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <a href="/admin/home" class="d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-4">Admin Panel</span>
                 </a>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white" aria-current="page">
-                            <i class="bi bi-house-door-fill me-2"></i>
-                            Dashboard
-                        </a>
-                    </li>
                     <li>
                         <a href="{{ url('/admin/townships')}}" class="nav-link text-white {{ request()->is('admin/townships*') ? 'active' : '' }}">
                             <i class="bi bi-geo-alt-fill me-2"></i>
@@ -118,6 +112,12 @@
             </div>
         </div>
     </div>
+    {{-- footer --}}
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p class="mb-0">&copy; {{ date('Y') }} {{ config('app.name', 'Laravel') }}. All rights reserved.</p>
+        </div>
+    </footer>
     <script>
         setTimeout(function () {
             let alert = document.getElementById('alert-success');

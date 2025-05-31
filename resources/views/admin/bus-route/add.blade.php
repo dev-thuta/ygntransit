@@ -69,7 +69,7 @@
                         {{-- submit cancel buttons --}}
                         <div class="row mb-0">
                             <div class="d-flex justify-content-end gap-2">
-                                <a href="{{ url('/admin/bus-routes') }}" class="btn btn-danger">Cancel</a>
+                                <a href="{{ url('/admin/bus-lines') }}" class="btn btn-danger">Cancel</a>
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>

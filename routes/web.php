@@ -17,13 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
     // townships
@@ -125,8 +121,17 @@ Route::middleware(['auth'])->group(function () {
         BusRouteController::class,
         'update'
     ]);
-    Route::get('/admin/bus-routes/delete{id}', [
+    Route::get('/admin/bus-routes/delete/{id}', [
         BusRouteController::class,
         'delete'
     ]);
 });
+
+Route::get('/bus-lines', [
+    BusLineController::class,
+    'publicIndex'
+]);
+Route::get('/bus-stops', [
+    BusStopController::class,
+    'publicIndex'
+]);

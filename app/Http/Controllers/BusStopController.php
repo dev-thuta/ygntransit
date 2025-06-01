@@ -109,11 +109,15 @@ class BusStopController extends Controller
 
         $busStops = BusStop::with('buslines')
             ->when($search, function ($query, $search) {
-                $query->where('name', 'like', "%{$search}%");
+                $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('road', 'like', "%{$search}%");
+                });
             })
             ->orderBy('name')
             ->paginate(15)
             ->withQueryString();
+
 
         return view('front.bus-stops', compact('busStops'));
     }

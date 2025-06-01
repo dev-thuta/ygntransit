@@ -135,3 +135,7 @@ Route::get('/bus-stops', [
     BusStopController::class,
     'publicIndex'
 ]);
+Route::get('/bus-routes', [
+    BusRouteController::class,
+    'publicIndex'
+]);

@@ -14,4 +14,16 @@ class BusLine extends Model
     {
         return $this->hasMany(BusRoute::class, 'bus_line_id');
     }
+
+    public function busstops()
+    {
+        return $this->hasManyThrough(
+            BusStop::class,
+            BusRoute::class,
+            'bus_line_id',
+            'id',
+            'id',
+            'bus_stop_id'
+        );
+    }
 }

@@ -105,4 +105,49 @@ class BusRouteController extends Controller
         return redirect('/admin/bus-routes')->with('success', 'Bus Route deleted successfully.');
     }
 
+    public function publicIndex(Request $request)
+{
+    $search = $request->input('search');
+
+    if ($search) {
+        $busLinesQuery = BusLine::where('name', 'like', "%$search%")
+            ->orWhereHas('busstops', function ($q) use ($search) {
+                $q->where('name', 'like', "%$search%")
+                  ->orWhere('road', 'like', "%$search%");
+            });
+
+        $paginatedBusLines = $busLinesQuery->paginate(1)->withQueryString();
+
+        $paginatedBusLines->load([
+            'busroutes' => function ($q) {
+                $q->orderBy('stop_order');
+            },
+            'busroutes.busstop',
+        ]);
+
+        // Add alternative lines for each bus line
+        foreach ($paginatedBusLines as $line) {
+            $stopIds = $line->busroutes->pluck('bus_stop_id')->unique();
+
+            $altLines = BusLine::where('id', '!=', $line->id)
+                ->whereHas('busroutes', function ($q) use ($stopIds) {
+                    $q->whereIn('bus_stop_id', $stopIds);
+                })
+                ->get();
+
+            $line->alternative_lines = $altLines;
+        }
+
+        return view('front.bus-routes', [
+            'busLines' => $paginatedBusLines,
+            'search' => $search,
+        ]);
+    } else {
+        return view('front.bus-routes', [
+            'busLines' => null,
+            'search' => null,
+        ]);
+    }
+}
+
 }

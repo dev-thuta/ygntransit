@@ -285,3 +285,46 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
 }
+.dot-sky {
+    background-color: #00bfff;
+}
+.dot-sun {
+    background-color: #ff6b81;
+}
+.dot-lavendar {
+    background-color: #a461d8;
+}
+.dot-grass {
+    background-color: #85e89d;
+}
+.dot-cookie {
+    background-color: #a47148;
+}
+.dot-night {
+    background-color: #495057;
+}
+.dot-default {
+    background-color: #adb5bd;
+}
+
+.route-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.route-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    top: -3px;
+}
+
+
+.route-name {
+    font-size: 1rem;
+    line-height: 1;
+}
+

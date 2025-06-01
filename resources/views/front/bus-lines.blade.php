@@ -189,8 +189,9 @@
         </div>
     </div>
     @if($buslines->isEmpty())
-        <div class="alert alert-warning text-center my-5">
-            ဘတ်စ်လိုင်းများမတွေ့ပါ။ ရှာဖွေရန် အသေးစိတ်အချက်အလက်များကို ပြန်စစ်ပါ။
+        <div class="col-12 text-center text-muted mt-5">
+            <i class="bi bi-emoji-frown fs-1"></i>
+            <p class="mt-3">ဘတ်စ်လိုင်းများမတွေ့ပါ။ ရှာဖွေရန် အသေးစိတ်အချက်အလက်များကို ပြန်စစ်ပါ။</p>
         </div>
     @endif
 

@@ -114,9 +114,9 @@
                                             <li class="mb-3 position-relative">
                                                 <div class="route-label d-flex align-items-center">
                                                     <span class="route-dot {{ $routeDotClass }}"></span>
-                                                    <strong class="d-block mb-2">{{ $currentStop->name }} - {{ $nextStop->name }}</strong>
+                                                    <strong class="d-block mb-2"><a href="{{ url('bus-stops?search=' . $currentStop->name) }}" class="text-decoration-none text-dark">{{ $currentStop->name }}</a> - <a href="{{ url('bus-stops?search=' . $nextStop->name) }}" class="text-decoration-none text-dark">{{ $nextStop->name }}</a></strong>
                                                 </div>
-                                                <small class="text-muted">{{ $currentStop->road }} → {{ $nextStop->road }}</small>
+                                                <small class="text-muted"><a href="{{ url('bus-stops?search=' . $currentStop->road) }}" class="text-secondary text-decoration-none">{{ $currentStop->road }}</a> → </small><a href="{{ url('bus-stops?search=' . $nextStop->road) }}" class="text-secondary text-decoration-none">{{ $nextStop->road }}</a>
                                             </li>
                                         @endif
                                     @endforeach
@@ -160,7 +160,7 @@
                                 </div>
                             </div>
                             <p class="text-muted text-end mt-4 mb-0 small">
-                                နောက်ဆုံးပြင်ဆင်ချိန်: {{ $busLine->updated_at->format('Y-M-d H:i A') }}
+                                နောက်ဆုံးပြင်ဆင်ချိန်: {{ $busLine->updated_at->format('Y-M-d h:i a') }}
                             </p>
                         @else
                         <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center mb-5">

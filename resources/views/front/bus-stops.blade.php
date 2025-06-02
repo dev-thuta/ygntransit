@@ -35,7 +35,7 @@
                             <i class="bi bi-geo-alt-fill me-1"></i> {{ $stop->name }}
                         </h5>
                         <p class="text-muted mb-2">
-                            <i class="bi bi-signpost-2 me-1"></i>
+                            <i class="bi bi-signpost-2 me-1 text-success"></i>
                             {{ $stop->road ?? 'လမ်းအမည်မသိရ' }}
                         </p>
                         <p>
@@ -85,9 +85,11 @@
                                             $class = 'badge-default';
                                         }
                                     @endphp
-                                    <span class="badge rounded-pill {{ $class }} me-1">
-                                        {{ preg_replace('/\D.*/', '', $busline->name) }}
-                                    </span>
+                                    <a href="{{ url('bus-routes?search=' . $busline->name) }}" class="text-decoration-none">
+                                        <span class="badge rounded-pill {{ $class }} me-1">
+                                            {{ preg_replace('/\D.*/', '', $busline->name) }}
+                                        </span>
+                                    </a>
                                 @endforeach
                             @endif
                         </p>

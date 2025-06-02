@@ -113,7 +113,10 @@ class BusRouteController extends Controller
         $busLinesQuery = BusLine::where('name', 'like', "%$search%")
             ->orWhereHas('busstops', function ($q) use ($search) {
                 $q->where('name', 'like', "%$search%")
-                  ->orWhere('road', 'like', "%$search%");
+                  ->orWhere('road', 'like', "%$search%")
+                  ->orWhereHas('township', function ($q2) use ($search) {
+                      $q2->where('name', 'like', "%{$search}%");
+                  });
             });
 
         $paginatedBusLines = $busLinesQuery->paginate(1)->withQueryString();
@@ -125,7 +128,6 @@ class BusRouteController extends Controller
             'busroutes.busstop',
         ]);
 
-        // Add alternative lines for each bus line
         foreach ($paginatedBusLines as $line) {
             $stopIds = $line->busroutes->pluck('bus_stop_id')->unique();
 

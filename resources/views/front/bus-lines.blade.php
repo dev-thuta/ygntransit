@@ -73,15 +73,16 @@
                         $startStop = $routes->first()?->busstop?->name;
                         $endStop = $routes->last()?->busstop?->name;
                     @endphp
-
-                    <div class="{{ $class }}">
-                        {{ preg_replace('/\D.*/', '', $busline->name) }}
-                    </div>
+                    <a href="{{ url('bus-routes?search=' . $busline->name) }}" class="text-decoration-none">
+                        <div class="{{ $class }}">
+                            {{ preg_replace('/\D.*/', '', $busline->name) }}
+                        </div>
+                    </a>
                     <div>
                         <h4 class="fw-bold">ဘတ်စ်လိုင်း - {{ $busline->name }}</h4>
                         <p class="text-body-secondary">
                             @if ($startStop && $endStop)
-                                {{ $startStop }} – {{ $endStop }}
+                                <a href="{{ url('bus-stops?search=' . $startStop) }}" class="text-secondary text-decoration-none">{{ $startStop }}</a> – <a href="{{ url('bus-stops?search=' . $startStop) }}" class="text-secondary text-decoration-none">{{ $endStop }}</a>
                             @else
                                 <span class="text-muted">လမ်းကြောင်းမရှိသေးပါ</span>
                             @endif
@@ -96,7 +97,7 @@
                                 YPS ကဒ်{{ $busline->isCardAvailable ? 'အသုံးပြုနိုင်သည်' : 'အသုံးပြုနိုင်မည်မဟုတ်ပါ' }}။
                             </strong>
                         </p>
-                        <a href="#" class="link-primary text-decoration-none fw-semibold">
+                        <a href="{{ url('bus-routes?search=' . $busline->name) }}" class="link-primary text-decoration-none fw-semibold">
                             လမ်းကြောင်းကြည့်ရန်<i class="ms-2 bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -154,15 +155,16 @@
                         $startStop = $routes->first()?->busstop?->name;
                         $endStop = $routes->last()?->busstop?->name;
                     @endphp
-
-                    <div class="{{ $class }}">
-                        {{ preg_replace('/\D.*/', '', $busline->name) }}
-                    </div>
+                    <a href="{{ url('bus-routes?search=' . $busline->name) }}" class="text-decoration none">
+                        <div class="{{ $class }}">
+                            {{ preg_replace('/\D.*/', '', $busline->name) }}
+                        </div>
+                    </a>
                     <div>
                         <h4 class="fw-bold">ဘတ်စ်လိုင်း - {{ $busline->name }}</h4>
                         <p class="text-body-secondary">
                             @if ($startStop && $endStop)
-                                {{ $startStop }} – {{ $endStop }}
+                                <a href="{{ url('bus-stops?search=' . $startStop) }}" class="text-secondary text-decoration-none">{{ $startStop }}</a> – <a href="{{ url('bus-stops?search=' . $startStop) }}" class="text-secondary text-decoration-none">{{ $endStop }}</a>
                             @else
                                 <span class="text-muted">လမ်းကြောင်းမရှိသေးပါ</span>
                             @endif
@@ -177,7 +179,7 @@
                                 YPS ကဒ်{{ $busline->isCardAvailable ? 'အသုံးပြုနိုင်သည်' : 'အသုံးပြုနိုင်မည်မဟုတ်ပါ' }}။
                             </strong>
                         </p>
-                        <a href="#" class="link-primary text-decoration-none fw-semibold">
+                        <a href="{{ url('bus-routes?search=' . $busline->name) }}" class="link-primary text-decoration-none fw-semibold">
                             လမ်းကြောင်းကြည့်ရန်<i class="ms-2 bi bi-arrow-right"></i>
                         </a>
                     </div>

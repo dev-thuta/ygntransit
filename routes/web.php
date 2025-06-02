@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\BusLineController;
-use App\Http\Controllers\BusRouteController;
-use App\Http\Controllers\BusStopController;
-use App\Http\Controllers\TownshipController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\BusLineController;
+use App\Http\Controllers\BusStopController;
+use App\Http\Controllers\BusRouteController;
+use App\Http\Controllers\TownshipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -126,7 +127,10 @@ Route::middleware(['auth'])->group(function () {
         'delete'
     ]);
 });
-
+Route::get('/home', [
+    FrontController::class,
+    'home'
+]);
 Route::get('/bus-lines', [
     BusLineController::class,
     'publicIndex'
@@ -138,4 +142,8 @@ Route::get('/bus-stops', [
 Route::get('/bus-routes', [
     BusRouteController::class,
     'publicIndex'
+]);
+Route::get('/guide', [
+    FrontController::class,
+    'guide'
 ]);

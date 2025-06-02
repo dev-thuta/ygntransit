@@ -155,7 +155,7 @@
                         $startStop = $routes->first()?->busstop?->name;
                         $endStop = $routes->last()?->busstop?->name;
                     @endphp
-                    <a href="{{ url('bus-routes?search=' . $busline->name) }}" class="text-decoration none">
+                    <a href="{{ url('bus-routes?search=' . $busline->name) }}" class="text-decoration-none">
                         <div class="{{ $class }}">
                             {{ preg_replace('/\D.*/', '', $busline->name) }}
                         </div>
